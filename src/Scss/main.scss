@@ -1,0 +1,29 @@
+[data-tooltip] {
+    position: relative;
+    &::after {
+        content: attr(data-tooltip);
+        display: block;
+        position: absolute;
+        background-color: #fff;
+        box-shadow:
+            0px 4px 5px 0px hsla(0,0%,0%,0.14), 
+            0px 1px 10px 0px hsla(0,0%,0%,0.12), 
+            0px 2px 4px -1px hsla(0,0%,0%,0.2);
+        border-radius: 4px;
+        color: #212224;
+        padding: 4px 7px;
+        font-size: 12px;
+        bottom: calc(50% + 3px);
+        left:50%; 
+        transform: translate(-50%, 50%);
+        white-space: nowrap;
+        transform: scale(0);
+        transition: transform ease-out 150ms, bottom ease-out 150ms;
+    }
+    &:hover::after {
+        transform: scale(1);
+        bottom: calc(100% + 3px);
+        left:50%; 
+        transform: translate(-50%, -5px);
+    }
+}

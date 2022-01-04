@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from 'react-router-dom'
 import AuthRoutes from "./Pages/Auth/AuthRoutes";
 import Home from "./Pages/Home";
+import './Scss/main.scss'
 
 const App = () => {
     return (
