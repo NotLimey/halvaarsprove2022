@@ -1,3 +1,27 @@
+@import './variables.scss';
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $f-title;
+}
+
+p, a, input, li {
+    font-family: $f-text;
+}
+
+.text-center {
+    text-align: center;
+}
+
 [data-tooltip] {
     position: relative;
     &::after {
@@ -26,4 +50,12 @@
         left:50%; 
         transform: translate(-50%, -5px);
     }
+}
+
+.fs-50 {
+    font-size: 50px;
+}
+
+.fs-30 {
+    font-size: 30px;
 }

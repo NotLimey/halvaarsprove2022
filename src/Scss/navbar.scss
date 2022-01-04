@@ -1,0 +1,47 @@
+@import './variables.scss';
+
+.navbar {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #f1f1f1;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.navbar-content {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-items {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    li {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+        color: #212224;
+        &:hover {
+            color: #212224d2;
+            text-decoration: underline;
+            text-underline-offset: 7px;
+        }
+    }
+}
+
+.navbar-logo {
+    h2 {
+        font-weight: 600;
+    }
+    a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #212224;
+        cursor: pointer;
+    }
+}

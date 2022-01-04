@@ -2,10 +2,7 @@ import { CombineClasses, Container, DefaultHelmet } from 'nl-ui'
 import '../../Scss/auth.scss';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, ButtonGroup, Checkbox, FormControlLabel, IconButton, InputAdornment, Link, TextField } from '@mui/material';
-import { RiGoogleFill, RiGithubFill } from 'react-icons/ri';
-import { SiDiscord } from 'react-icons/si'
-import { FaTwitch, FaAmazon } from 'react-icons/fa'
+import { Box, Button, IconButton, InputAdornment, Link, TextField } from '@mui/material';
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md'
 
 const Login = () => {
@@ -80,7 +77,7 @@ const Login = () => {
                             Title='Login'
                         />
                         <Container>
-                            <h1>Login</h1>
+                            <h1 className="text-center fs-30">Login</h1>
                             <Box maxWidth={350}>
                                 <TextField sx={{mb: 1.5}} fullWidth variant="outlined" label="Username" placeholder='Username' type="text" onChange={(e : any) => setUsername(e.target.value)}></TextField>
                                 <TextField sx={{mb: 1.5}} fullWidth variant="outlined" label="Password" placeholder='Password'
@@ -99,12 +96,9 @@ const Login = () => {
                                         )
                                     }}
                                 ></TextField>
-                                <Link href="#" variant="body2">
-                                    {'I dont have an account'}
-                                </Link>
 
                                 <Container style={{padding: '0'}}>
-                                    <Button type="submit" sx={{m: 1, p: .5, pl: 4, pr: 4, mt: 3, mb: 3}} variant="contained">
+                                    <Button type="submit" sx={{m: 1, p: 1, pl: 8, pr: 8, mt: 3, mb: 3}} variant="contained">
                                         Submit
                                     </Button>
                                 </Container>
