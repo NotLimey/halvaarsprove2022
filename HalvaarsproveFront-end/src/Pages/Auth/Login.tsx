@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Button, IconButton, InputAdornment, Link, TextField } from '@mui/material';
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md'
 import Navbar from '../../Components/Navbar';
+import GoBackBtn from '../../Components/GoBackBtn';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -23,8 +24,9 @@ const Login = () => {
 
     return (
         <React.Fragment>
+            <GoBackBtn className='gobackbtn-top-right' />
             <section className='login_nd_register-section'>
-                <Container style={{marginTop: '50px'}} className={CombineClasses('login-form', Register ? 'register-form' : undefined)}>
+                <Container style={{marginTop: '50px', alignItems: 'center'}} className={CombineClasses('login-form', Register ? 'register-form' : undefined)}>
                     {Register ? 
                         <form>
                             

@@ -66,6 +66,34 @@ p, a, input, li {
     padding-top: 100px;
 }
 
+.go_back_icon {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    * {
+        margin: 0;
+    }
+    svg {
+        font-size: 20px;
+    }
+}
+
+.gobackbtn-top-right {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+
+@media screen and (max-width: 500px) {
+    .gobackbtn-top-right {
+        left: 20px;
+    }
+}
+
 .fs-50 {
     font-size: 50px;
 }
