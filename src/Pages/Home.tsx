@@ -26,6 +26,7 @@ const Home = () => {
             <section id="om-oss">
                 <div className="om-oss_content">
                     <h2>Om oss</h2>
+                    
                 </div>
             </section>
             <Footer />

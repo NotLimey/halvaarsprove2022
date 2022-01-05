@@ -19,6 +19,10 @@ p, a, input, li {
     font-family: $f-text;
 }
 
+.tRight {
+    text-align: right;
+}
+
 #root {
     min-height: 100vh;
     position: relative;
