@@ -11,7 +11,7 @@ const Navbar = () => {
                 <div className="navbar-items">
                     <li><Link to="/home">Home</Link></li>
                     <li><Link to="/om-oss">Om Oss</Link></li>
-                    <li style={{marginLeft: '40px'}}><Link to="/auth/login">Login</Link></li>
+                    <li className="nav-login"><Link to="/auth/login">Login</Link></li>
                 </div>
             </div>
         </nav>

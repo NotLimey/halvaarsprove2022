@@ -1,0 +1,43 @@
+@import './variables.scss';
+
+.footer {
+    background-color: #023047;
+    padding: 80px 10% 40px 10%;
+    display: flex;
+    justify-content: center;
+    * {
+        margin: 0;
+        color: #f1f4f1;
+    }
+    & > div:first-of-type {
+        width: 100%;
+        max-width: 1500px;
+    }
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 50px;
+    div {
+        h3 {
+            font-size: 25px;
+            border-bottom: 1px solid #f1f4f1;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        h5 {
+            font-size: 17px;
+            margin-bottom: 7px;
+            margin-top: 7px;
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .footer-content div {
+        width: 30%;
+    }
+}
