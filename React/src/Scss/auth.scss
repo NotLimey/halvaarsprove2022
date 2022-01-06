@@ -11,6 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #0D0D17;
+  z-index: -2;
 }
 
 .background-objects {
@@ -30,8 +31,8 @@ body {
   }
   :nth-child(2) {
     opacity: .5;
-    width: 700px;
     position: absolute;
+    width: 700px;
     right: -150px;
     top: -200px;
   }
@@ -39,6 +40,7 @@ body {
 
 .login-form__container {
   width: 450px;
+  z-index: 1;
   h1 {
     font-size: 40px;
     text-align: center;
@@ -51,10 +53,24 @@ body {
   margin: 0;
   top: 30px;
   left: 40px;
+  z-index: 1;
   h2 {
+    a {
+      color: #e7e7e7df;
+      margin: 0;
+      text-decoration: none;
+      font-family: $f-title;
+    }
     margin: 0;
     font-size: 30px;
-    color: #e7e7e7df;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    column-gap: 10px;
+    span {
+      font-size: 18px;
+      color: #e7e7e7df;
+    }
   }
 }
 
@@ -82,15 +98,65 @@ body {
   background-color: #C0FDD4;
   font-weight: 500;
   font-family: $f-text;
+  cursor: pointer;
+  &:hover {
+    background-color: #90BE9F;
+  }
 }
 
 .login__options {
   font-size: 15px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
+  a {
+    color: #C0FDD4;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      color: #90BE9F !important;
+      text-decoration: underline;
+    }
+  }
   .MuiFormControlLabel-label, .MuiButtonBase-root {
     color: #e7e7e7;
+  }
+}
+
+// media queries
+
+@media screen and (max-width: 1200px) {
+  .background-objects {
+    :nth-child(1) {
+      opacity: .5;
+      width: 450px;
+      position: absolute;
+      left: -100px;
+      bottom: -130px;
+    }
+    :nth-child(2) {
+      opacity: .5;
+      position: absolute;
+      width: 450px;
+      right: -100px;
+      top: -130px;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .login-form__container {
+    width: 90%;
+    h1 {
+      font-size: 30px;
+    }
+  }
+  .login__options  {
+    font-size: 13px;
+  }
+  .login__input {
+    font-size: 15px;
   }
 }

@@ -2,7 +2,7 @@ import '../Scss/footer.scss'
 
 const Footer = () => {
     return (
-        <footer className="footer">
+        <footer id="footer" className="footer">
             <div className="footer-content">
                 <div>
                     <h3>Kontakt Oss</h3>

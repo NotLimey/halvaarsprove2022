@@ -25,9 +25,15 @@
     li {
         list-style: none;
     }
-    a {
+    a, button {
         text-decoration: none;
         color: #212224;
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
+        font-family: $f-text;
+        font-weight: 500;
+        cursor: pointer;
         &:hover {
             color: #212224d2;
             text-decoration: underline;

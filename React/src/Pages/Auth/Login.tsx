@@ -9,7 +9,7 @@ const Login = () => {
         <React.Fragment>
             <section className="login-page">
                 <div className="company-mark__login">
-                    <h2>Innlandet IT</h2>
+                    <h2><Link to="/">Innlandet IT</Link> <span>©</span></h2>
                 </div>
                 <div className="background-objects">
                     <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">

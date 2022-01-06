@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Routes, Route } from 'react-router-dom'
 import AuthRoutes from "./Pages/Auth/AuthRoutes";
 import Login from "./Pages/Auth/Login";
@@ -10,7 +10,8 @@ const App = () => {
         <React.Fragment>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={ <Login /> } />
+            <Route path="/admin" element={ <Login /> } />
             <Route path="/auth/*" element={<AuthRoutes />} />
           </Routes>
         </React.Fragment>
