@@ -43,12 +43,15 @@
 
 #om-oss {
     min-height: 300px;
+    padding: 50px 5%;
 }
 
-.om-oss_content {
+.default-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 50px 0;
+}
+
+.om-oss_container {
     h2 {
         font-size: 35px;
         font-weight: 600;
@@ -56,5 +59,66 @@
     }
     p {
         font-size: 17px;
+    }
+}
+
+.vårt-team_header {
+    font-size: 30px;
+}
+
+.ansatte-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 30px;
+    column-gap: 25px;
+    width: min-content;
+    margin: 0 auto;
+    div {
+        max-width: 100%;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.041);
+            opacity: 0.95;
+            transition: background-color 300ms, opacity 300ms, transform 300ms;
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.274);
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+        h3 {
+            margin: 10px 0 0 0;
+            color: #212224fa;
+        }
+        p {
+            color: #212224fa;
+            margin: 0;
+            font-size: 14px;
+            i {
+                color: #212224cc;
+            }
+        }
+    }
+}
+
+// Media queries
+
+@media screen and (max-width: 1100px) {
+    .ansatte-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .ansatte-container {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

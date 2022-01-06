@@ -1,7 +1,96 @@
-.login-form {
-    width: 500px;
-    background-color: #f5f5f5;
-    border-radius: 9px;
-    box-shadow:
-      0px 4px 5px 0px hsla(0,0%,0%,0.1), 
+@import './variables.scss';
+/*
+body {
+  background-color: #0D0D17 !important;
+}*/
+
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0D0D17;
+}
+
+.background-objects {
+  position: fixed;
+  z-index: 0;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  :nth-child(1) {
+    opacity: .5;
+    width: 700px;
+    position: absolute;
+    left: -150px;
+    bottom: -200px;
+  }
+  :nth-child(2) {
+    opacity: .5;
+    width: 700px;
+    position: absolute;
+    right: -150px;
+    top: -200px;
+  }
+}
+
+.login-form__container {
+  width: 450px;
+  h1 {
+    font-size: 40px;
+    text-align: center;
+    color: #e7e7e7;
+  }
+}
+
+.company-mark__login {
+  position: absolute;
+  margin: 0;
+  top: 30px;
+  left: 40px;
+  h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #e7e7e7df;
+  }
+}
+
+.login__input {
+  font-size: 17px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background-color: #c0fdd459;
+  border: 1px solid #0000008e;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  color: #e7e7e7;
+  &:focus {
+    outline: none;
+  }
+}
+
+.login_btn {
+  width: 100%;
+  border: none;
+  padding: 10px 15px;
+  font-size: 17px;
+  border-radius: 4px;
+  background-color: #C0FDD4;
+  font-weight: 500;
+  font-family: $f-text;
+}
+
+.login__options {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  .MuiFormControlLabel-label, .MuiButtonBase-root {
+    color: #e7e7e7;
+  }
 }

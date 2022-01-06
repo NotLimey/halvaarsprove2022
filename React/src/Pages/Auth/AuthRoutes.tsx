@@ -7,7 +7,6 @@ const AuthRoutes = () => {
         <React.Fragment>
             <Routes>
                 <Route path="/" element={<Navigate to="/" />} />
-                <Route path="/login" element={<Login />} />
             </Routes>
         </React.Fragment>
     );

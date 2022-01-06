@@ -1,143 +1,39 @@
-import { CombineClasses, Container, DefaultHelmet } from 'nl-ui'
+import React from 'react';
 import '../../Scss/auth.scss';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Box, Button, IconButton, InputAdornment, Link, TextField } from '@mui/material';
-import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md'
-import Navbar from '../../Components/Navbar';
-import GoBackBtn from '../../Components/GoBackBtn';
+import TextField from '@mui/material/TextField';
+import { Box, Checkbox, FormControlLabel } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
-    const navigate = useNavigate();
-
-    const [Username, setUsername] = useState<string | undefined>('');
-    const [Password, setPassword] = useState<string | undefined>('');
-    const [Loading, setLoading] = useState<boolean>(false)
-    const [Register, setRegister] = useState(false);
-
-    const [showPassword, setShowPassword] = useState(false);
-    const handleClickShowPassword = () => setShowPassword(!showPassword);
-
-    if(Loading) {
-        return <p>loading..</p>
-    }
-
     return (
         <React.Fragment>
-            <GoBackBtn className='gobackbtn-top-right' />
-            <section className='login_nd_register-section'>
-                <Container style={{marginTop: '50px', alignItems: 'center'}} className={CombineClasses('login-form', Register ? 'register-form' : undefined)}>
-                    {Register ? 
-                        <form>
-                            
-                            <DefaultHelmet 
-                                Title='Register'
-                            />
-                            <Container>
-                                <Box component="form" sx={{p: 1}} maxWidth={500}>
-                                    <Box sx={{
-                                        '& > :not(style)': { width: '48%' }, display: 'flex', justifyContent: 'space-between'
-                                    }}>
-                                        <TextField sx={{mb: 1}} fullWidth variant="outlined" label="First name" placeholder='First name' type="text" ></TextField>
-                                        <TextField sx={{mb: 1}} fullWidth variant="outlined" label="Last name" placeholder='Last name' type="text" ></TextField>
-                                        
-                                    </Box>
-                                    <Box sx={{
-                                        '& > :not(style)': { mb: 1 }
-                                    }}>
-                                        <TextField fullWidth variant="outlined" label="Username" placeholder='Username' type="text" ></TextField>
-                                        <TextField fullWidth variant="outlined" label="Display name" placeholder='Display name' type="text" ></TextField>
-                                        <TextField fullWidth variant="outlined" label="Email address" placeholder='Email address' type="text" ></TextField>
-                                    </Box>
-                                    <Box sx={{
-                                        '& > :not(style)': { width: '48%' }, display: 'flex', justifyContent: 'space-between'
-                                    }}>
-                                        <TextField sx={{mb: 1}} variant="outlined" label="Password" placeholder='Password' type="password" ></TextField>
-                                        <TextField sx={{mb: 1}} variant="outlined" label="Repeat password" placeholder='Repeat password' type="password" ></TextField>
-                                    </Box>
-                                    
-                                    {/* Terms of service
-                                    <Box sx={{display: 'flex'}}>
-                                        <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 16 }, height: 34, mt: '10px' }}/>
-                                        <p>I accept the <a href="https://github.com">terms</a> of service</p>
-                                    </Box>*/}
-                                    <Link href="#" variant="body2">
-                                        {'I dont have an account'}
-                                    </Link>
-
-                                    <Container style={{padding: '0'}}>
-                                        <Button type="submit" sx={{m: 1, p: .5, pl: 4, pr: 4, mt: 3, mb: 3}} variant="contained">
-                                            Submit
-                                        </Button>
-                                    </Container>
-                                    </Box>
-                            </Container>
-                            
-                        </form>
-                    :
-                        <form>
-                            <DefaultHelmet 
-                                Title='Login'
-                            />
-                            <Container>
-                                <h1 className="text-center fs-30">Login</h1>
-                                <Box maxWidth={350}>
-                                    <TextField sx={{mb: 1.5}} fullWidth variant="outlined" label="Username" placeholder='Username' type="text" onChange={(e : any) => setUsername(e.target.value)}></TextField>
-                                    <TextField sx={{mb: 1.5}} fullWidth variant="outlined" label="Password" placeholder='Password'
-                                        onChange={(e : any) => setPassword(e.target.value)}
-                                        type={showPassword ? "text" : "password"}
-                                        InputProps={{ // <-- This is where the toggle button is added.
-                                            endAdornment: (
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                >
-                                                {showPassword ? <MdOutlineVisibility /> : <MdOutlineVisibilityOff />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                            )
-                                        }}
-                                    ></TextField>
-
-                                    <Container style={{padding: '0'}}>
-                                        <Button type="submit" sx={{m: 1, p: 1, pl: 8, pr: 8, mt: 3, mb: 3}} variant="contained">
-                                            Submit
-                                        </Button>
-                                    </Container>
-
-                                </Box>
-                                
-                                {/*
-                                <FormGroup
-                                    style={{
-                                        width: '300px'
-                                    }}
-                                >
-                                    <TextInput 
-                                        type="text"
-                                        placeholder='Username..'
-                                        onChange={(e? : React.ChangeEvent<HTMLInputElement>) => setUsername(e?.target.value)}
-                                    />
-                                    <TextInput 
-                                        type="password"
-                                        placeholder='Password..'
-                                        onChange={(e? : React.ChangeEvent<HTMLInputElement>) => setPassword(e?.target.value)}
-                                    />
-                                </FormGroup>
-                                <Container style={{padding: '20px 0 0 0'}}>
-                                    <Button type="submit" theme='primary' style={{width: '200px', marginLeft: 'auto', marginRight: 'auto'}} styleType='default'>
-                                        Login
-                                    </Button>
-                                </Container>*/}
-                            </Container>
-                            
-                        </form>
-                    }
-                </Container>
+            <section className="login-page">
+                <div className="company-mark__login">
+                    <h2>Innlandet IT</h2>
+                </div>
+                <div className="background-objects">
+                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+                        <path id="blob" d="M409.5,315Q353,380,282,401Q211,422,138.5,380.5Q66,339,51,243Q36,147,117.5,86.5Q199,26,287,60Q375,94,420.5,172Q466,250,409.5,315Z" fill="#c0fdd4"></path>
+                    </svg>
+                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+                        <path id="blob" d="M415,314Q352,378,274.5,431Q197,484,149,403Q101,322,66.5,233.5Q32,145,117.5,94Q203,43,285,73.5Q367,104,422.5,177Q478,250,415,314Z" fill="#c0fdd4"></path>
+                    </svg>
+                </div>
+                <div className="login-form__container">
+                    <h1>Log in to Your Account</h1>
+                    <Box>
+                        <input className='login__input' type="text" id="username" placeholder='Username' />
+                        <input className='login__input' type="password" id="password" placeholder='Password' />
+                        <div className='login__options'>
+                            <FormControlLabel control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 17 } }} defaultChecked />} label="Keep me signed in?" />
+                            <Link to="/auth/forgot-password">Forgot password?</Link>
+                        </div>
+                        <button className='login_btn'>Log in</button>
+                    </Box>
+                </div>
             </section>
         </React.Fragment>
-    );
+    )
 }
 
 export default Login;
