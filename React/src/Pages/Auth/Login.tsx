@@ -21,6 +21,11 @@ const Login = () => {
                 password: Password
             })
         })
+        .then(() => {
+            setTimeout(() => {
+                window.location.reload();
+            }, 300)
+        });
     }
 
     return (

@@ -127,6 +127,13 @@ body {
 
 .user-page {
   background-color: #0D0D17;
+  width: 100%;
+  min-height: 100vh;
+  padding: 50px 5%;
+  color: rgb(255, 255, 255);
+  * {
+    margin: 0;
+  }
 }
 
 // media queries

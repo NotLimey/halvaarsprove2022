@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 import './Scss/main.scss'
 import { setUser } from "./Store/actions";
 import { IUser } from "./Store/types";
+import {User as UserPage} from './Pages/Auth/User'
 
 const App = () => {
   
@@ -46,7 +47,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={ Loading ? <p>Loading...</p> : User.id ? <h3>Logged in</h3> : <Login /> } />
-        <Route path="/admin" element={ <Login /> } />
+        <Route path="/admin" element={ Loading ? <p>Loading...</p> : User.id ? <UserPage /> : <Login /> } />
         <Route path="/auth/*" element={<AuthRoutes />} />
       </Routes>
     </React.Fragment>
