@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../Scss/auth.scss';
 import TextField from '@mui/material/TextField';
 import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+    const [Email, setEmail] = useState('');
+    const [Password, setPassword] = useState('');
+
+    const SubmitLogin = async (e : React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        await fetch('https://localhost:7006/Login', {
+            headers: {'Content-Type': 'application/json'},
+            credentials: 'include',
+            method: 'POST',
+            body: JSON.stringify({
+                email: Email,
+                password: Password
+            })
+        })
+    }
+
     return (
         <React.Fragment>
             <section className="login-page">
@@ -21,9 +39,9 @@ const Login = () => {
                 </div>
                 <div className="login-form__container">
                     <h1>Log in to Your Account</h1>
-                    <Box>
-                        <input className='login__input' type="text" id="username" placeholder='Username' />
-                        <input className='login__input' type="password" id="password" placeholder='Password' />
+                    <Box component="form" onSubmit={SubmitLogin}>
+                        <input onChange={(e : any) => setEmail(e.target.value)} className='login__input' type="text" id="username" placeholder='Username' />
+                        <input onChange={(e : any) => setPassword(e.target.value)} className='login__input' type="password" id="password" placeholder='Password' />
                         <div className='login__options'>
                             <FormControlLabel control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 17 } }} defaultChecked />} label="Keep me signed in?" />
                             <Link to="/auth/forgot-password">Forgot password?</Link>

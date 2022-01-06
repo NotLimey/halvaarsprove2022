@@ -1,9 +1,12 @@
 import React from "react";
+import '../../Scss/auth.scss';
 
 const User = () => {
     return (
         <React.Fragment>
-            <h1>User</h1>
+            <section className="user-page">
+
+            </section>
         </React.Fragment>
     );
 }
