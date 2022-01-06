@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../../Scss/auth.scss';
-import TextField from '@mui/material/TextField';
 import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import { Link } from 'react-router-dom';
 

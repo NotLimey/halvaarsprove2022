@@ -131,8 +131,16 @@ body {
   min-height: 100vh;
   padding: 50px 5%;
   color: rgb(255, 255, 255);
+  p i {
+    color: rgba(255, 255, 255, 0.726);
+    font-weight: 300;
+  }
   * {
     margin: 0;
+  }
+  ::selection {
+    background-color: #d9d9d9;
+    color: #212224;
   }
 }
 

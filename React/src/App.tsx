@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from 'react-router-dom'
-import AuthRoutes from "./Pages/Auth/AuthRoutes";
 import Login from "./Pages/Auth/Login";
 import Home from "./Pages/Home";
 import './Scss/main.scss'
 import { setUser } from "./Store/actions";
 import { IUser } from "./Store/types";
 import {User as UserPage} from './Pages/Auth/User'
+import { DefaultHelmet } from "nl-ui";
+import { Server } from "./Assets/Images";
+import Loader from "./Components/Loader";
+import NotFound from "./Pages/NotFound";
 
 const App = () => {
   
@@ -44,11 +47,15 @@ const App = () => {
 
   return (
     <React.Fragment>
+      <DefaultHelmet
+        Title="Innlandet IT"
+        FavIcon={Server}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={ Loading ? <p>Loading...</p> : User.id ? <h3>Logged in</h3> : <Login /> } />
-        <Route path="/admin" element={ Loading ? <p>Loading...</p> : User.id ? <UserPage /> : <Login /> } />
-        <Route path="/auth/*" element={<AuthRoutes />} />
+        <Route path="/login" element={ Loading ? <Loader /> : User.id ? <UserPage /> : <Login /> } />
+        <Route path="/admin" element={ Loading ? <Loader /> : User.id ? <UserPage /> : <Login /> } />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </React.Fragment>
   );

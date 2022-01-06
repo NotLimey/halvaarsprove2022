@@ -1,6 +1,6 @@
 import React from "react";
 import BackgroundImage from '../Assets/Images/InnovateBTechnology.jpg'
-import { Container, DefaultHelmet } from "nl-ui";
+import { DefaultHelmet } from "nl-ui";
 import '../Scss/home.scss'
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";

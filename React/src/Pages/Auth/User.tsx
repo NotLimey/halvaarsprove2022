@@ -1,10 +1,13 @@
-import React from "react";
+import { DefaultHelmet } from "nl-ui";
+import React, { useState } from "react";
 import { RootStateOrAny, useSelector } from "react-redux";
 import '../../Scss/auth.scss';
 import { IUser } from "../../Store/types";
 
 const User = () => {
     const User = useSelector<RootStateOrAny, IUser>(state => state.user);
+
+    const [ShowSecret, setShowSecret] = useState(false);
 
     async function Logout() {
         await fetch('https://localhost:7006/Logout', {
@@ -21,6 +24,10 @@ const User = () => {
     
     return (
         <React.Fragment>
+            
+            <DefaultHelmet
+                Title="Admin Panel"
+            />
             <section className="user-page">
                 <h1>Velkommen til admin panelet!!</h1>
                 <br />
@@ -31,8 +38,18 @@ const User = () => {
                 <p>Id: <i>{User.id}</i></p>
                 <br />
                 <br />
-                <h2>Secret message</h2>
-                <p>Denne meldingen er kjempe hemmelig. Den kan bare sees av de som er logget inn! Ække det kult?!</p>
+                <h2>Hemmelig beskjed</h2>
+                <br />
+                {ShowSecret ? 
+                    <React.Fragment>
+                        <button onClick={() => setShowSecret(false)}>Lukk hemmelighet</button>
+                        <p>Denne meldingen er kjempe hemmelig. Den kan bare sees av de som er logget inn! Ække det kult?!</p>
+                    </React.Fragment> 
+                    : 
+                    <React.Fragment>
+                        <button onClick={() => setShowSecret(true)}>Vis hemmelighet</button>
+                    </React.Fragment> 
+                }
                 <br /><br /><br />
                 <button onClick={Logout} style={{maxWidth: '300px'}} className='login_btn'>Logg ut</button>
             </section>
