@@ -11,8 +11,14 @@ import { DefaultHelmet } from "nl-ui";
 import { Server } from "./Assets/Images";
 import Loader from "./Components/Loader";
 import NotFound from "./Pages/NotFound";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 const App = () => {
+
+  Aos.init({
+    duration: 900
+  });
   
   const [Loading, setLoading] = useState(true)
   const User = useSelector<RootStateOrAny, IUser>(state => state.user);
@@ -57,7 +63,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={ Loading ? <Loader fullScreen /> : User.id ? <UserPage /> : <Login /> } />
-        <Route path="/admin" element={ Loading ? <Loader fullScreen text="Loading user" /> : User.id ? <UserPage /> : <Login /> } />
+        <Route path="/admin" element={ Loading ? <Loader fullScreen text="Contacting api.." /> : User.id ? <UserPage /> : <Login /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </React.Fragment>

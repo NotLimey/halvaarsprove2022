@@ -33,12 +33,12 @@ const Home = () => {
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis autem tenetur sit fugiat ipsa hic ipsam et veritatis sapiente iste sint deleniti laborum cupiditate inventore laudantium porro ea placeat in nesciunt id enim, repellat provident necessitatibus adipisci. Soluta, est! Ut at modi porro voluptatibus tempore magni corporis ex ad sunt?</p>
                         </div>
                         <div className="three_d-ilustration">
-                            <img src={Laptop} alt="laptop" />
+                            <img data-aos="zoom-in" src={Laptop} alt="laptop" />
                         </div>
                     </div>
                     <div className="default-2-content">
                         <div className="three_d-ilustration">
-                            <img src={Lock} alt="Lock" />
+                            <img data-aos="zoom-in" src={Lock} alt="Lock" />
                         </div>
                         <div className="om-oss__text">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis autem tenetur sit fugiat ipsa hic ipsam et veritatis sapiente iste sint deleniti laborum cupiditate inventore laudantium porro ea placeat in nesciunt id enim, repellat provident necessitatibus adipisci. Soluta, est! Ut at modi porro voluptatibus tempore magni corporis ex ad sunt?</p>

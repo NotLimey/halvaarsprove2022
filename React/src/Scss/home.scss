@@ -49,6 +49,7 @@
 .default-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 5%;
 }
 
 .om-oss_container {
@@ -152,8 +153,27 @@
     }
 }
 
+@media screen and (max-width: 950px) {
+    .default-2-content {
+        flex-direction: column-reverse;
+        row-gap: 50px;
+        &:first-of-type {
+            margin-bottom: 100px;
+        }
+    }
+    .om-oss__text {
+        width: 90%;
+    }
+}
+
 @media screen and (max-width: 540px) {
     .ansatte-container {
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .three_d-ilustration {
+        
     }
 }
