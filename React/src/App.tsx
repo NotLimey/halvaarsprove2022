@@ -56,8 +56,8 @@ const App = () => {
       />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={ Loading ? <Loader /> : User.id ? <UserPage /> : <Login /> } />
-        <Route path="/admin" element={ Loading ? <Loader /> : User.id ? <UserPage /> : <Login /> } />
+        <Route path="/login" element={ Loading ? <Loader fullScreen /> : User.id ? <UserPage /> : <Login /> } />
+        <Route path="/admin" element={ Loading ? <Loader fullScreen text="Loading user" /> : User.id ? <UserPage /> : <Login /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </React.Fragment>

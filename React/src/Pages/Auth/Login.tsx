@@ -37,6 +37,8 @@ const Login = () => {
         })
     }
 
+    if(Loading) return <Loader fullScreen text='Logging you in..' />;
+
     return (
         <React.Fragment>
             <section className="login-page">

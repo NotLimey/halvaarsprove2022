@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { RootStateOrAny, useSelector } from "react-redux";
 import '../../Scss/auth.scss';
 import { IUser } from "../../Store/types";
+import { VscEye, VscEyeClosed } from 'react-icons/vsc'
+import { Button } from "@mui/material";
 
 const User = () => {
     const User = useSelector<RootStateOrAny, IUser>(state => state.user);
@@ -42,12 +44,16 @@ const User = () => {
                 <br />
                 {ShowSecret ? 
                     <React.Fragment>
-                        <button onClick={() => setShowSecret(false)}>Lukk hemmelighet</button>
+                        <Button color="inherit" onClick={() => setShowSecret(false)} variant="outlined" startIcon={<VscEyeClosed />}>
+                            Skjul
+                        </Button>
                         <p>Denne meldingen er kjempe hemmelig. Den kan bare sees av de som er logget inn! Ække det kult?!</p>
                     </React.Fragment> 
                     : 
                     <React.Fragment>
-                        <button onClick={() => setShowSecret(true)}>Vis hemmelighet</button>
+                        <Button color="inherit" onClick={() => setShowSecret(true)} variant="outlined" startIcon={<VscEye />}>
+                            Se
+                        </Button>
                     </React.Fragment> 
                 }
                 <br /><br /><br />
