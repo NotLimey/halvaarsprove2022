@@ -1,0 +1,44 @@
+﻿body {
+    background-color: #0D1117 !important;
+}
+
+* {
+    color: #e3e3e3 !important;
+}
+
+.topbar {
+    background-color: #090b0f !important;
+}
+
+.opblock-section-header, select, textarea, input, pre {
+    background-color: #0D1117 !important;
+}
+
+small {
+    background-color: #999 !important;
+}
+
+small pre {
+    background-color: #999 !important;
+    color: #000 !important;
+}
+
+.version-stamp {
+    background-color: #89BF04 !important;
+}
+
+.version-stamp pre {
+    background-color: #89BF04 !important;
+}
+
+option:hover {
+    background-color: red;
+}
+
+input, select {
+    border: 1px solid #000 !important;
+}
+
+.model-container {
+    background-color: #171c26 !important;
+}
