@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import '../../Scss/auth.scss';
 import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Loader from '../../Components/Loader';
 
 const Login = () => {
 
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
 
+    const [Loading, setLoading] = useState(false);
+    const [Error, setError] = useState(false)
+
     const SubmitLogin = async (e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        setLoading(true);
         await fetch('https://localhost:7006/Login', {
             headers: {'Content-Type': 'application/json'},
             credentials: 'include',
@@ -21,10 +26,15 @@ const Login = () => {
             })
         })
         .then(() => {
+            setLoading(false);
             setTimeout(() => {
                 window.location.reload();
             }, 300)
-        });
+        })
+        .catch((err) => {
+            setLoading(false);
+            setError(true);
+        })
     }
 
     return (
@@ -51,6 +61,8 @@ const Login = () => {
                             <Link to="/auth/forgot-password">Forgot password?</Link>
                         </div>
                         <button className='login_btn'>Log in</button>
+                        {Loading && <Loader />}
+                        {Error && <p className="error">Det skjedde noe feil, prøv igjen senere</p>}
                     </Box>
                 </div>
             </section>

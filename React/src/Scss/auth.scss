@@ -41,11 +41,19 @@ body {
 .login-form__container {
   width: 450px;
   z-index: 1;
+  color: #e7e7e7;
   h1 {
     font-size: 40px;
     text-align: center;
-    color: #e7e7e7;
   }
+  p {
+    text-align: center;
+  }
+}
+
+.error {
+  color: var(--error);
+  font-weight: 600;
 }
 
 .company-mark__login {
