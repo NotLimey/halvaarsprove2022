@@ -29,6 +29,9 @@ const App = () => {
         if(response.ok) {
           return response.json()
         }
+        if(response.status === 401) {
+          console.log("Access denied")
+        }
         throw response;
       }))
       .then(data => {
