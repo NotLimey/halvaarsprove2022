@@ -3,7 +3,8 @@
 .navbar {
     position: fixed;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     background-color: rgba(248, 248, 248, .95);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
@@ -72,5 +73,84 @@
         * {
             color: #f1f7f1;
         }
+    }
+}
+
+.hamburger-menu {
+    display: none;
+    align-items: center;
+}
+
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding-right: 12px;
+    height: 0px;
+    overflow-y: hidden;
+    transition: height 500ms;
+    li {
+        list-style: none;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 6px 0;
+    }
+    button {
+        text-decoration: none;
+        color: #212224;
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
+        font-family: $f-text;
+        font-weight: 500;
+        cursor: pointer;
+        text-align: end;
+        &:hover {
+            color: #212224d2;
+            text-decoration: underline;
+            text-underline-offset: 7px;
+        }
+    }
+}
+
+.spin-in {
+    animation-name: spinIn;
+    animation-duration: 300ms;
+}
+
+@keyframes spinIn {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(-360deg);
+    }
+}
+
+.spin-in-reverse {
+    animation-name: spinIn;
+    animation-duration: 300ms;
+}
+
+@keyframes spinIn {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    .navbar-items {
+        display: none;
+    }
+    .dropdown-content {
+        display: flex;
     }
 }
