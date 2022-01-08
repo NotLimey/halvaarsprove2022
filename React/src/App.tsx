@@ -13,6 +13,7 @@ import Loader from "./Components/Loader";
 import NotFound from "./Pages/NotFound";
 import Aos from "aos";
 import 'aos/dist/aos.css';
+import { createTheme, ThemeProvider } from "@mui/material";
 
 const App = () => {
 
@@ -73,6 +74,12 @@ const App = () => {
     FetchEmployees();
   }, [dispatch])
 
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+
   return (
     <React.Fragment>
       <DefaultHelmet
@@ -81,8 +88,14 @@ const App = () => {
       />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={ Loading ? <Loader fullScreen /> : User.id ? <UserPage /> : <Login /> } />
-        <Route path="/admin" element={ Loading ? <Loader fullScreen text="Contacting api.." /> : User.id ? <UserPage /> : <Login /> } />
+        <Route path="/login" element={ Loading ? <Loader fullScreen /> : User.id ? 
+          <ThemeProvider theme={darkTheme}>
+            <UserPage />
+          </ThemeProvider> : <Login /> } />
+        <Route path="/admin" element={ Loading ? <Loader fullScreen text="Contacting api.." /> : User.id ? 
+          <ThemeProvider theme={darkTheme}>
+            <UserPage />
+          </ThemeProvider> : <Login /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </React.Fragment>
