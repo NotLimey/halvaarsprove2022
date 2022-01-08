@@ -103,5 +103,7 @@ namespace API.Controllers
                 message = "Successfully logged out!"
             });
         }
+
+        // Employee
     }
 }
