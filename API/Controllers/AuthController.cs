@@ -13,16 +13,19 @@ namespace API.Controllers
         private readonly IUserService _userService;
         private readonly JwtService _jwtService;
         private readonly IConfiguration _configuration;
+        private readonly IEmployeeService _employeeService;
 
         public AuthController(
             IUserService userService,
             JwtService jwtService,
-            IConfiguration configuration
+            IConfiguration configuration,
+            IEmployeeService employeeService
         )
         {
             _userService = userService;
             _jwtService = jwtService;
             _configuration = configuration;
+            _employeeService = employeeService;
         }
 
         [HttpPost("Register")]
@@ -103,7 +106,5 @@ namespace API.Controllers
                 message = "Successfully logged out!"
             });
         }
-
-        // Employee
     }
 }

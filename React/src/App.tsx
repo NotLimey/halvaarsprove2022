@@ -4,9 +4,9 @@ import { Routes, Route } from 'react-router-dom'
 import Login from "./Pages/Auth/Login";
 import Home from "./Pages/Home";
 import './Scss/main.scss'
-import { setUser } from "./Store/actions";
+import { setEmployees, setUser } from "./Store/actions";
 import { IUser } from "./Store/types";
-import {User as UserPage} from './Pages/Auth/User'
+import {Admin as UserPage} from './Pages/Auth/Admin'
 import { DefaultHelmet } from "nl-ui";
 import { Server } from "./Assets/Images";
 import Loader from "./Components/Loader";
@@ -25,6 +25,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // Fetch User
     const FetchUser = async () => {
       await fetch('https://localhost:7006/user', {
         headers: {'Content-Type': 'application/json'},
@@ -50,8 +51,26 @@ const App = () => {
         console.error("Error fetching user")
       })
     }
+    
+    // FetchEmployees
+    const FetchEmployees = async () => {
+      await fetch(`https://localhost:7006/Employee`, {
+          headers: {'Content-Type': 'application/json', 'Key': `${process.env.REACT_APP_EMPLOYEE_KEY}`},
+          credentials: 'include',
+          method: 'GET'
+      }).then((response => {
+        if(response.ok) {
+          return response.json()
+        }
+        throw response;
+      }))
+      .then(data => {
+        dispatch(setEmployees(data))
+      })
+  }
 
     FetchUser();
+    FetchEmployees();
   }, [dispatch])
 
   return (

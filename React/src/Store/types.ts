@@ -4,6 +4,15 @@ export interface IUser {
     email?: string;
 }
 
+export interface IEmployee {
+    id?: string;
+    name?: string;
+    email?: string;
+    role?: string;
+    image?: string;
+}
+
 export interface Store {
-    user: IUser
+    user: IUser,
+    employees: IEmployee[]
 }

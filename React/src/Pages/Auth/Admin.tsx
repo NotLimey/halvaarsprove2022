@@ -2,12 +2,13 @@ import { DefaultHelmet } from "nl-ui";
 import React, { useState } from "react";
 import { RootStateOrAny, useSelector } from "react-redux";
 import '../../Scss/auth.scss';
-import { IUser } from "../../Store/types";
+import { IEmployee, IUser } from "../../Store/types";
 import { VscEye, VscEyeClosed } from 'react-icons/vsc'
 import { Button } from "@mui/material";
 
-const User = () => {
+const Admin = () => {
     const User = useSelector<RootStateOrAny, IUser>(state => state.user);
+    const Employees = useSelector<RootStateOrAny, IEmployee[]>(state => state.employees);
 
     const [ShowSecret, setShowSecret] = useState(false);
 
@@ -58,9 +59,22 @@ const User = () => {
                 }
                 <br /><br /><br />
                 <button onClick={Logout} style={{maxWidth: '300px'}} className='login_btn'>Logg ut</button>
+                <br /><br /><br />
+                <h3>Ansatte</h3>
+                <Button>Edit</Button>
+                <div className="ansatte-container-admin ">
+                    {Employees?.map((employee : any, i : number) => 
+                        <div key={`Employee[${i}]`}>
+                            <img src={employee.image} alt="" />
+                            <h3>{employee.name}</h3>
+                            <p>{employee.email}</p>
+                            <p><i>{employee.role}</i></p>
+                        </div>
+                    )}
+                </div>
             </section>
         </React.Fragment>
     );
 }
 
-export {User};
+export {Admin};

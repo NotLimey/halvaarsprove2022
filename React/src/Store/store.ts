@@ -1,6 +1,7 @@
 import { Store } from "./types";
 import { 
     ActionTypes, 
+    SET_EMPLOYEES, 
     SET_USER
 } from "./actions";
 
@@ -12,13 +13,20 @@ import {
 */
 
 function reducer(state: Store = {
-    user: { }
+    user: { },
+    employees: []
 }, action: ActionTypes) {
     switch(action.type) {
         case SET_USER: {
             return {
                 ...state,
                 user: action.payload
+            }
+        }
+        case SET_EMPLOYEES: {
+            return {
+                ...state,
+                employees: action.payload
             }
         }
         default: 
