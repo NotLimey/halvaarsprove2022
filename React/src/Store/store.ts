@@ -5,13 +5,6 @@ import {
     SET_USER
 } from "./actions";
 
-// Redux implementation
-/*
-    settings: {
-        theme: GetStorage('settings')?.theme || 'light'
-    }
-*/
-
 function reducer(state: Store = {
     user: { },
     employees: []
