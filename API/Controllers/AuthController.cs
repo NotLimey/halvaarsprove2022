@@ -34,6 +34,7 @@ namespace API.Controllers
         [HttpPost("User")]
         public async Task<IActionResult> Register(RegisterDto dto)
         {
+            if (dto.Email == null) return BadRequest(new {message = "Email is null"});
             if (!_authorizationService.IsValidEmail(dto.Email))
                 return BadRequest(new { message = "Email is not valid" });
 
@@ -50,9 +51,11 @@ namespace API.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(LoginDto dto, bool Remember)
+        public async Task<IActionResult> Login(LoginDto dto)
         {
-            User user = await _userService.GetUserByEmailAsync(dto.Email);
+            if (dto.Email == null) return BadRequest(new {message = "Email is null"});
+            User? user = await _userService.GetUserByEmailAsync(dto.Email);
+
             if (user == null) return NotFound();
 
             if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))

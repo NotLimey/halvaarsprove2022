@@ -33,8 +33,8 @@ namespace API.Helpers
         {
             try
             {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
+                var adress = new System.Net.Mail.MailAddress(email);
+                return adress.Address == email;
             }
             catch
             {
