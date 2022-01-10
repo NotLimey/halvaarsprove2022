@@ -14,27 +14,28 @@ namespace API.Controllers
         private readonly JwtService _jwtService;
         private readonly IConfiguration _configuration;
         private readonly IEmployeeService _employeeService;
+        private readonly AuthorizationService _authorizationService;
 
         public AuthController(
             IUserService userService,
             JwtService jwtService,
             IConfiguration configuration,
-            IEmployeeService employeeService
+            IEmployeeService employeeService,
+            AuthorizationService authorizationService
         )
         {
             _userService = userService;
             _jwtService = jwtService;
             _configuration = configuration;
             _employeeService = employeeService;
+            _authorizationService = authorizationService;
         }
 
         [HttpPost("Register")]
         public async Task<IActionResult> Register(RegisterDto dto)
         {
-            if (dto.Email != null && (!dto.Email.Contains("@") || !dto.Email.Contains(".")))
-            {
+            if (!_authorizationService.IsValidEmail(dto.Email))
                 return BadRequest(new { message = "Email is not valid" });
-            }
 
             User user = new User
             {
@@ -71,13 +72,7 @@ namespace API.Controllers
         {
             try
             {
-                var jwt = Request.Cookies["jwt"];
-
-                var token = _jwtService.Verify(jwt);
-
-                Guid userId = Guid.Parse(token.Issuer);
-
-                User user = await _userService.GetUserAsync(userId);
+                var user = await _authorizationService.IsAuthenticated(Request);
 
                 if (user == null) return Unauthorized(new { message = "user null" });
 

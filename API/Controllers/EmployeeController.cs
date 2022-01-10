@@ -12,18 +12,21 @@ namespace API.Controllers
         private readonly JwtService _jwtService;
         private readonly IConfiguration _configuration;
         private readonly IEmployeeService _employeeService;
+        private readonly AuthorizationService _authorizationService;
 
         public EmployeeController(
             IUserService userService,
             JwtService jwtService,
             IConfiguration configuration,
-            IEmployeeService employeeService
+            IEmployeeService employeeService,
+            AuthorizationService authorizationService
         )
         {
             _userService = userService;
             _jwtService = jwtService;
             _configuration = configuration;
             _employeeService = employeeService;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet("Employee")]
@@ -38,18 +41,11 @@ namespace API.Controllers
         }
 
         [HttpPost("Employee")]
-        public async Task<IActionResult> PostEmployeeAsync(CreateEmployeeDto dto)
+        public async Task<IActionResult> PostEmployeeAsync([FromBody] CreateEmployeeDto dto)
         {
             try
             {
-                var jwt = Request.Cookies["jwt"];
-
-                var token = _jwtService.Verify(jwt);
-
-                Guid userId = Guid.Parse(token.Issuer);
-
-                User user = await _userService.GetUserAsync(userId);
-
+                var user = await _authorizationService.IsAuthenticated(Request);
                 if (user == null) return Unauthorized(new { message = "user null" });
 
                 Employee employee = new Employee
@@ -71,21 +67,15 @@ namespace API.Controllers
         }
 
         [HttpDelete("Employee")]
-        public async Task<IActionResult> DeleteEmployeeAsync(string Id)
+        public async Task<IActionResult> DeleteEmployeeAsync(string id)
         {
             try
             {
-                var jwt = Request.Cookies["jwt"];
-
-                var token = _jwtService.Verify(jwt);
-
-                Guid userId = Guid.Parse(token.Issuer);
-
-                User user = await _userService.GetUserAsync(userId);
+                var user = await _authorizationService.IsAuthenticated(Request);
 
                 if (user == null) return Unauthorized(new { message = "user null" });
 
-                var guid = Guid.Parse(Id);
+                var guid = Guid.Parse(id);
                 return Ok(await _employeeService.RemoveEmployeeAsync(guid));
             }
             catch (Exception e)
