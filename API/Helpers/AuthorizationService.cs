@@ -41,5 +41,11 @@ namespace API.Helpers
                 return false;
             }
         }
+
+        public bool IsGuidValid(string value)
+        {
+            Guid x;
+            return Guid.TryParse(value, out x);
+        }
     }
 }

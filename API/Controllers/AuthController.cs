@@ -31,7 +31,7 @@ namespace API.Controllers
             _authorizationService = authorizationService;
         }
 
-        [HttpPost("Register")]
+        [HttpPost("User")]
         public async Task<IActionResult> Register(RegisterDto dto)
         {
             if (!_authorizationService.IsValidEmail(dto.Email))
@@ -88,6 +88,24 @@ namespace API.Controllers
                 Console.Write(e);
                 return Unauthorized();
             }
+        }
+
+        [HttpGet("Users")]
+        public async Task<IActionResult> GetUsersAsync()
+        {
+            try
+            {
+                var user = await _authorizationService.IsAuthenticated(Request);
+
+                if (user == null) return Unauthorized(new { message = "user null" });
+
+                return Ok(await _userService.GetUsersAsync());
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+                return Unauthorized();
+            }
 
         }
 
@@ -100,6 +118,30 @@ namespace API.Controllers
             {
                 message = "Successfully logged out!"
             });
+        }
+
+        [HttpDelete("User")]
+        public async Task<IActionResult> RemoveAsync(string id)
+        {
+            try
+            {
+                var user = _authorizationService.IsAuthenticated(Request);
+                if (user == null) return Unauthorized(new {message = "User is null"});
+
+                if (!_authorizationService.IsGuidValid(id))
+                    return BadRequest(new {message = "Guid is not valid"});
+
+                var guid = Guid.Parse(id);
+                var userToRemove = await _userService.GetUserAsync(guid);
+                if (userToRemove == null) return BadRequest();
+                var result = await _userService.RemoveUserAsync(userToRemove);
+
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }

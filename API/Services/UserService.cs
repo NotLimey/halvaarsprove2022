@@ -13,9 +13,15 @@ namespace API.Services
             _dbContext = dbContext;
         }
 
-        public async Task<User> GetUserAsync(Guid id)
+        public async Task<List<User>> GetUsersAsync()
+        {
+            return await _dbContext.Users.ToListAsync();
+        }
+
+        public async Task<User?> GetUserAsync(Guid id)
         {
             return await _dbContext.Users.FirstOrDefaultAsync(p => p.Id == id);
+            
         }
 
         public async Task<User> GetUserByEmailAsync(string email)
@@ -26,6 +32,13 @@ namespace API.Services
         public async Task<User> CreateUserAsync(User user)
         {
             await _dbContext.Users.AddAsync(user);
+            await _dbContext.SaveChangesAsync();
+            return user;
+        }
+
+        public async Task<User> RemoveUserAsync(User user)
+        {
+            _dbContext.Users.Remove(user);
             await _dbContext.SaveChangesAsync();
             return user;
         }
