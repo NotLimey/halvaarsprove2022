@@ -14,6 +14,7 @@ import NotFound from "./Pages/NotFound";
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import { createTheme, ThemeProvider } from "@mui/material";
+import AdministrateEmployees from "./Pages/Auth/AdministrateEmployees";
 
 const App = () => {
 
@@ -95,6 +96,11 @@ const App = () => {
         <Route path="/admin" element={ Loading ? <Loader fullScreen text="Contacting api.." /> : User.id ? 
           <ThemeProvider theme={darkTheme}>
             <UserPage />
+          </ThemeProvider> : <Login /> } />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/ansatte" element={ Loading ? <Loader fullScreen text="Contacting api.." /> : User.id ? 
+          <ThemeProvider theme={darkTheme}>
+            <AdministrateEmployees />
           </ThemeProvider> : <Login /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>
