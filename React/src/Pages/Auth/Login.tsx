@@ -56,7 +56,7 @@ const Login = () => {
                 <div className="login-form__container">
                     <h1>Log in to Your Account</h1>
                     <Box component="form" onSubmit={SubmitLogin}>
-                        <input onChange={(e : any) => setEmail(e.target.value)} className='login__input' type="text" id="username" placeholder='Username' />
+                        <input onChange={(e : any) => setEmail(e.target.value)} className='login__input' type="text" id="username" placeholder='Email' />
                         <input onChange={(e : any) => setPassword(e.target.value)} className='login__input' type="password" id="password" placeholder='Password' />
                         <div className='login__options'>
                             <FormControlLabel control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 17 } }} defaultChecked />} label="Keep me signed in?" />
