@@ -67,15 +67,22 @@ namespace API.Controllers
 
             Response.Cookies.Append("jwt", jwt, new CookieOptions { HttpOnly = true });
 
-            return Ok(new { message = "success" });
+            return Ok(new { message = "success", jwt = jwt });
         }
 
         [HttpGet("User")]
-        public async Task<IActionResult> GetUserAsync(string? Id)
+        public async Task<IActionResult> GetUserAsync(string? Id, [FromHeader] string? jwt)
         {
             try
             {
-                var user = await _authorizationService.IsAuthenticated(Request);
+                User user = null;
+                if(jwt != null)
+                {
+                    user = await _authorizationService.IsAuthenticatedManualJWt(jwt);
+                }else
+                {
+                    user = await _authorizationService.IsAuthenticated(Request);
+                }
 
                 if (user == null) return Unauthorized(new { message = "user null" });
 

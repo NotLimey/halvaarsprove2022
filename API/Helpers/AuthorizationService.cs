@@ -29,6 +29,18 @@ namespace API.Helpers
             return user;
         }
 
+        public async Task<User?> IsAuthenticatedManualJWt(string jwt)
+        {
+            if (jwt == null) return null;
+
+            var token = _jwtService.Verify(jwt);
+
+            var userId = Guid.Parse(token.Issuer);
+
+            var user = await _userService.GetUserAsync(userId);
+            return user;
+        }
+
         public bool IsValidEmail(string email)
         {
             try
